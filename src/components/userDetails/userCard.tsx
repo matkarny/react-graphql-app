@@ -7,7 +7,6 @@ const UserCard = (props: IUserData)  => {
   
   return <div>
       <Card title={username} >
-
           <p>{name}</p>
           <a href={`mailto:${email}`}>{email}</a>
           <a href={`tel:${phone}`}>{phone}</a>
