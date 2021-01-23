@@ -16,10 +16,13 @@ const UsersDetails = ()  => {
     const { loading, error, data } = useQuery<IUserDetailsData, IIdVars>(GET_USER_DETAILS, { variables: {
         id
     }}); 
+
+    const onAddPost = () => console.log('add')
+
     if (error) return <p>Error :(</p>;
 
     return <>
-    <PageHeader backLink={`/`} userName={data?.user.username}/>
+    <PageHeader backLink={`/`} userName={data?.user.username} onAdd={onAddPost}/>
      <Content className="content">
     {loading ? <CustomSkieleton /> : data ? data.user.posts.data.map(post => <PostRow {...post}/>) : <p> No post found</p>} 
     </Content></>

@@ -1,13 +1,3 @@
 .content {
   padding: 100px 20px
 }
-
-.in-column{
-  display: flex;
-  flex-direction: column;
-}
-
-.in-row{
-  display: flex;
-  flex-direction: row;
-}
