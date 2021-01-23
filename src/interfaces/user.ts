@@ -1,4 +1,6 @@
-export interface IUserData {
+import { IPost } from "./post";
+
+export interface IUser {
     id: number,
     name: string,
     username: string,
@@ -11,6 +13,18 @@ export interface IUserData {
 }
 export interface IUsersData{
     users: {
-        data: IUserData[]
+        data: IUser[]
     } 
+}
+
+export interface IUserDetails{
+    id: number,
+    username: string,
+    posts: {
+        data: IPost[]
+    }
+}
+
+export interface IUserDetailsData {
+    user: IUserDetails
 }

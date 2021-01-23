@@ -1,0 +1,24 @@
+.heading-container{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.post-icon{
+    font-size: 3rem;
+    color: black !important;
+}
+
+.post-icon-delete{
+    margin-right: 30px;
+}
+
+.button-delete{
+    margin-bottom: 30px;
+}
+
+.card-custom{
+    display: flex;
+    justify-content: space-between;
+    padding: 10px;
+}

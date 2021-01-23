@@ -1,0 +1,12 @@
+
+.post-body{
+    display: block;
+    text-align: center
+}
+
+.post-button-wrapper{
+    display: flex;
+    justify-content: space-between;
+    padding: 0 50px;
+    text-align: center;
+}

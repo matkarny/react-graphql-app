@@ -1,20 +1,16 @@
-import React, {useState} from 'react';
-import client from './service/AppService';
-import { ApolloProvider } from '@apollo/client';
-import UsersView from './views/UsersView';
-import 'antd/dist/antd.css'; 
+import React from 'react';
 import Layout, { Content } from 'antd/lib/layout/layout';
+import Routes from './routes/Routes';
+
 import './App.css'
+import 'antd/dist/antd.css';
+
+
 function App() {
-  
   return (
-    <ApolloProvider client={client}>
-      <Layout>
-        <Content className="Container">
-      <UsersView />
-      </Content>
-      </Layout>
-    </ApolloProvider>
+  <Layout style={{ height: "100%" }}>
+      <Routes />
+  </Layout>
   );
 }
 
