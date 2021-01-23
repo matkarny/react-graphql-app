@@ -8,7 +8,7 @@ import 'antd/dist/antd.css';
 
 function App() {
   return (
-  <Layout style={{ height: "100%" }}>
+  <Layout style={{ minHeight: "100vh" }}>
       <Routes />
   </Layout>
   );

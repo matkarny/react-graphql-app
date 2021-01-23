@@ -1,0 +1,14 @@
+.user-links-wrapper{
+    display: flex;
+    flex-direction: column;
+}
+
+.user-button-wrapper{
+    margin-top: 30px;
+    text-align: center;
+}
+
+.user-button{
+    width: 80%;
+    height: 80px !important;
+}

@@ -2,13 +2,20 @@
     display: flex;
     justify-content: space-between;
     align-items: center;
-    height: 100px;
+    height: 80px;
+    padding-top: 30px;
 }
 .header-back{
-    display: flex;
+    height: 100% !important;
+    display: flex !important;
     align-items: center;
+    justify-content: center;
 }
 .header-back-icon{
     font-size: 3rem;
     margin-right: 10px;
+}
+
+.header-back-text{
+    margin-top: -6px
 }

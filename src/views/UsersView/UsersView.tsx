@@ -13,9 +13,9 @@ const UsersView = () => {
 
   if (error) return <p>Error :(</p>;
   return <Content className="content">
-            <Row gutter={24} align="middle">
-              {loading ? <>{[...Array(9)].map((el, i) => <Col span={8} key={i}> <Card loading /></Col>)}</> :
-                data ? data.users.data.map((user) => <Col span={8}> <UserCard {...user} /></Col>) : <p> Users no found </p>}
+            <Row gutter={[24, 24]} align="middle">
+              {loading ? <>{[...Array(9)].map((el, i) => <Col span={6} key={i}> <Card loading /></Col>)}</> :
+                data ? data.users.data.map((user) => <Col span={6}> <UserCard {...user} /></Col>) : <p> Users no found </p>}
             </Row>
           </Content>
 }
