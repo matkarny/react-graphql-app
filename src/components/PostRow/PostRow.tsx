@@ -17,7 +17,7 @@ const PostRow = (props: IPost) => {
 
   const location = useLocation()
   const history = useHistory()
-  console.log(location)
+
   return <>
   <div className="ant-card ant-card-bordered card-custom">
     <div className="heading-container">

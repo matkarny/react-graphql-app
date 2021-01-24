@@ -13,26 +13,42 @@ import useFetchUser from '../../hooks/useFetchUser';
 import { IParams } from '../../interfaces/params';
 import { IUserDetailsData } from '../../interfaces/user';
 import { IIdVars } from '../../interfaces/vars';
-
+import Form from 'antd/lib/form/Form';
+import useCreatePost from '../../hooks/useCreatePost';
 
 const UsersDetails = () => {
   const [modalOpen, setModalOpen] = useState(false)
   const { userId } = useParams<IParams>()
   const { loading, username, posts } = useFetchUser(userId)  
-
+  const { createNewPost } = useCreatePost()
+  
   const onModalClose = () => setModalOpen(false)
   const onModalOpen = () => setModalOpen(true)
   
+  const onSubmit = ( values: any) => {
+    createNewPost({...values}).then(data => console.log(data))
+    onModalClose()
+  }
+
   return <>
     <PageHeader backLink={`/`} userName={username} onAdd={onModalOpen} />
     <Content className="content">
       {loading ? <CustomSkieleton /> : posts ? posts.map(post => <PostRow {...post} />) : <p> No post found</p>}
     </Content>
-    <CustomModal title="Add post" visible={modalOpen} onOk={onModalClose} onCancel={onModalClose}>
-      <form>
-        <FormItem label="Title" name="title"><Input /></FormItem>
-        <FormItem label="Body" name="body"><Input.TextArea style={{ height: "200px" }} /></FormItem>
-      </form>
+    <CustomModal title="Add post" visible={modalOpen} onSubmit={onSubmit} onCancel={onModalClose}>
+        <FormItem label="Title" name="title" rules={[
+          {
+            required: true,
+            message: 'Title is required!',
+          },
+        ]}><Input />
+        </FormItem>
+        <FormItem label="Body" name="body" rules={[
+          {
+            required: true,
+            message: 'Body is required!',
+          },
+        ]} ><Input.TextArea style={{ height: "200px" }} /></FormItem>
     </CustomModal>
   </>
     ;

@@ -16,6 +16,7 @@ import CustomModal from '../../components/CustomModal/CustomModal';
 import FormItem from 'antd/lib/form/FormItem';
 import { USER_ROUTE } from '../../routes/Routes';
 import useFetchPost from '../../hooks/useFetchPost';
+import useCreateComment from '../../hooks/useCreateComment';
 
 
 
@@ -24,10 +25,15 @@ const PostView = () => {
   const [showComments, setShowComments] = useState(false)
   const [modalOpen, setModalOpen] = useState(false)
   const { userId, postId } = useParams<IParams>()
-  const { loading, post, username, comments } = useFetchPost( postId)
+  const { loading, post, username, comments } = useFetchPost(postId)
+  const { createNewComment } = useCreateComment()
 
   const onModalClose = () => setModalOpen(false)
   const onModalOpen = () => setModalOpen(true)
+  const onSubmit = (values: any ) => {
+    createNewComment(values)
+    onModalClose()
+  }
 
   return <>
     <PageHeader backLink={`${USER_ROUTE}/${userId}`} userName={username} />
@@ -50,12 +56,32 @@ const PostView = () => {
           {comments && comments.map(comment => <Comment key={`comment-${comment.id}`} {...comment} />)}
         </Suspense>
       </div>}
-      <CustomModal title="Add comment" visible={modalOpen} onOk={onModalClose} onCancel={onModalClose}>
-        <form>
-          <FormItem label="Title" name="title"><Input /></FormItem>
-          <FormItem label="Email" name="email"><Input /></FormItem>
-          <FormItem label="Body" name="body"><Input.TextArea style={{ height: "200px" }} /></FormItem>
-        </form>
+      <CustomModal title="Add comment" visible={modalOpen} onSubmit={onSubmit} onCancel={onModalClose}>
+        <FormItem label="Name" name="name" rules={[
+          {
+            required: true,
+            message: 'Name is required!',
+          },
+        ]}><Input />
+        </FormItem>
+        <FormItem label="Email" name="email" rules={[
+          {
+            required: true,
+            message: 'Email is required!',
+          },
+          {
+            type: 'email',
+            message: 'The input is not valid E-mail!',
+          },
+        ]}><Input />
+        </FormItem>
+        <FormItem label="Body" name="body" rules={[
+          {
+            required: true,
+            message: 'Body is required!',
+          },
+
+        ]} ><Input.TextArea style={{ height: "200px" }} /></FormItem>
       </CustomModal>
     </Content>
   </>
