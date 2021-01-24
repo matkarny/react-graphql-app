@@ -9,6 +9,7 @@ import CustomSkieleton from '../../components/CustomSkieleton/CustomSkieleton';
 import PageHeader from '../../components/PageHeader/PageHeader';
 import PostRow from '../../components/PostRow/PostRow';
 import { GET_USER_DETAILS } from '../../fragments/users';
+import useFetchUser from '../../hooks/useFetchUser';
 import { IParams } from '../../interfaces/params';
 import { IUserDetailsData } from '../../interfaces/user';
 import { IIdVars } from '../../interfaces/vars';
@@ -16,23 +17,16 @@ import { IIdVars } from '../../interfaces/vars';
 
 const UsersDetails = () => {
   const [modalOpen, setModalOpen] = useState(false)
-  const { id } = useParams<IParams>()
-  const { loading, error, data } = useQuery<IUserDetailsData, IIdVars>(GET_USER_DETAILS, {
-    variables: {
-      id
-    }
-  });
+  const { userId } = useParams<IParams>()
+  const { loading, username, posts } = useFetchUser(userId)  
 
   const onModalClose = () => setModalOpen(false)
   const onModalOpen = () => setModalOpen(true)
-
-
-  if (error) return <p>Error :(</p>;
-
+  
   return <>
-    <PageHeader backLink={`/`} userName={data?.user.username} onAdd={onModalOpen} />
+    <PageHeader backLink={`/`} userName={username} onAdd={onModalOpen} />
     <Content className="content">
-      {loading ? <CustomSkieleton /> : data ? data.user.posts.data.map(post => <PostRow {...post} />) : <p> No post found</p>}
+      {loading ? <CustomSkieleton /> : posts ? posts.map(post => <PostRow {...post} />) : <p> No post found</p>}
     </Content>
     <CustomModal title="Add post" visible={modalOpen} onOk={onModalClose} onCancel={onModalClose}>
       <form>

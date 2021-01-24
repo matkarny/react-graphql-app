@@ -1,17 +1,17 @@
 export interface IPost {
-    id: number,
+    id: string,
     title: string,
 }
 
 export interface IComment {
-    id: number,
+    id: string,
     name: string,
     email: string,
     body: string,
 }
 
 export interface IPostDetails{
-    id: number,
+    id: string,
     title: string,
     body: string,
     user: {

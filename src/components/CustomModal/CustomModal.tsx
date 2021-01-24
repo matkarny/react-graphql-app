@@ -17,6 +17,7 @@ const CustomModal: React.FC<IPageHeaderProps> = ({ title, visible, children, onO
     visible={visible}
     onOk={onOk}
     onCancel={onCancel}
+    okText="Save"
   >
     <Title style={{textAlign: "center"}}>{title}</Title>
     <br />

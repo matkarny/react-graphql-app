@@ -15,6 +15,7 @@ import CustomSkieleton from '../../components/CustomSkieleton/CustomSkieleton';
 import CustomModal from '../../components/CustomModal/CustomModal';
 import FormItem from 'antd/lib/form/FormItem';
 import { USER_ROUTE } from '../../routes/Routes';
+import useFetchPost from '../../hooks/useFetchPost';
 
 
 
@@ -22,25 +23,20 @@ import { USER_ROUTE } from '../../routes/Routes';
 const PostView = () => {
   const [showComments, setShowComments] = useState(false)
   const [modalOpen, setModalOpen] = useState(false)
-  const { id, postId } = useParams<IParams>()
-  const { loading, error, data } = useQuery<IPostDetailsData>(GET_POST_DATA, {
-    variables: {
-      postId
-    }
-  });
-  if (error) return <p>Error :(</p>;
+  const { userId, postId } = useParams<IParams>()
+  const { loading, post, username, comments } = useFetchPost( postId)
 
   const onModalClose = () => setModalOpen(false)
   const onModalOpen = () => setModalOpen(true)
 
   return <>
-    <PageHeader backLink={`${USER_ROUTE}/${id}`} userName={data?.post.user.username} />
+    <PageHeader backLink={`${USER_ROUTE}/${userId}`} userName={username} />
     <Content className="content in-column" >
       {loading ? <Skeleton active /> :
-        data ?
+        post ?
           <div className="post-body">
-            <Title level={1}>{data?.post.title}</Title>
-            <p>{data?.post.body}</p>
+            <Title level={1}>{post.title}</Title>
+            <p>{post.body}</p>
             <div className="post-button-wrapper" >
               <Button type="link" onClick={() => setShowComments(!showComments)}>
                 {!showComments ? 'Show comments' : 'Hide comments'}
@@ -51,7 +47,7 @@ const PostView = () => {
           <span> Post has content </span>}
       {showComments && <div className="post-comment-container">
         <Suspense fallback={<CustomSkieleton />}>
-          {data?.post.comments.data.map(comment => <Comment key={`comment-${comment.id}`} {...comment} />)}
+          {comments && comments.map(comment => <Comment key={`comment-${comment.id}`} {...comment} />)}
         </Suspense>
       </div>}
       <CustomModal title="Add comment" visible={modalOpen} onOk={onModalClose} onCancel={onModalClose}>

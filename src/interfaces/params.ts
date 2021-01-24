@@ -1,4 +1,4 @@
 export interface IParams {
-    id: string,
+    userId: string,
     postId: string
 }
