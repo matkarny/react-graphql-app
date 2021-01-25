@@ -1,8 +1,6 @@
 import { useMutation } from '@apollo/client';
 import notification from 'antd/lib/notification/index';
 
-
-import { CREATE_COMMENT, DELETE_COMMENT } from '../fragments/comment';
 import { CREATE_POST } from '../fragments/post';
 
 interface ICreatePostProps {

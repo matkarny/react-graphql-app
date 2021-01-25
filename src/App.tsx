@@ -1,5 +1,6 @@
 import React from 'react';
-import Layout, { Content } from 'antd/lib/layout/layout';
+import Layout from 'antd/lib/layout/layout';
+
 import Routes from './routes/Routes';
 
 import './App.css'

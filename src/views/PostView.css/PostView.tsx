@@ -1,23 +1,24 @@
-import { useQuery } from '@apollo/client';
-import { Content } from 'antd/lib/layout/layout';
+
 import React, { Suspense, useState } from 'react';
 import { useParams } from 'react-router';
-import PageHeader from '../../components/PageHeader/PageHeader';
-import { GET_POST_DATA } from '../../fragments/post';
-import { IParams } from '../../interfaces/params';
-import { IPostDetailsData } from '../../interfaces/post';
-import Title from 'antd/lib/typography/Title'
-import { Button, Input, Skeleton } from 'antd';
 
-import './PostView.css'
+import PageHeader from '../../components/PageHeader/PageHeader';
+import Title from 'antd/lib/typography/Title'
+import { Content } from 'antd/lib/layout/layout';
+import FormItem from 'antd/lib/form/FormItem';
 import Comment from '../../components/Comment/Comment';
 import CustomSkieleton from '../../components/CustomSkieleton/CustomSkieleton';
 import CustomModal from '../../components/CustomModal/CustomModal';
-import FormItem from 'antd/lib/form/FormItem';
+
+
+import { Button, Input, Skeleton } from 'antd';
+
 import { USER_ROUTE } from '../../routes/Routes';
 import useFetchPost from '../../hooks/useFetchPost';
 import useCreateComment from '../../hooks/useCreateComment';
+import { IParams } from '../../interfaces/params';
 
+import './PostView.css'
 
 
 

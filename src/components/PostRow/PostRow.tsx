@@ -1,12 +1,14 @@
-import { Button, Card, Typography } from 'antd';
 import React, { useState } from 'react';
 import { useHistory, useLocation } from 'react-router';
-import { RightOutlined, DeleteOutlined } from '@ant-design/icons'
-import { IPost } from '../../interfaces/post';
+
+import ConfirmationModal from '../ConfirmationModal/ConfirmationModal';
 import Title from 'antd/lib/typography/Title'
+import Button from 'antd/lib/button';
+import { RightOutlined, DeleteOutlined } from '@ant-design/icons'
+
+import { IPost } from '../../interfaces/post';
 
 import './PostRow.css'
-import ConfirmationModal from '../ConfirmationModal/ConfirmationModal';
 
 const PostRow = (props: IPost) => {
   const { id, title } = props

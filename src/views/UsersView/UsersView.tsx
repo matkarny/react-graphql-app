@@ -1,10 +1,11 @@
 import React from 'react';
-import { useQuery } from '@apollo/client';
-import { IUsersData } from '../../interfaces/user';
+
 import UserCard from '../../components/UserCard/UserCard';
-import { Card, Col, Row } from 'antd';
-import { GET_USERS } from '../../fragments/users';
 import { Content } from 'antd/lib/layout/layout';
+import Row from 'antd/lib/row'
+import Col from 'antd/lib/col'
+import Card from 'antd/lib/card'
+
 import useFetchUsers from '../../hooks/useFetchUsers';
 
 

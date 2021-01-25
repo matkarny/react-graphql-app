@@ -1,19 +1,15 @@
-import { useQuery } from '@apollo/client';
+
+import React, { useState } from 'react';
 import { Input } from 'antd';
 import FormItem from 'antd/lib/form/FormItem';
 import { Content } from 'antd/lib/layout/layout';
-import React, { useState } from 'react';
 import { useParams } from 'react-router';
 import CustomModal from '../../components/CustomModal/CustomModal';
 import CustomSkieleton from '../../components/CustomSkieleton/CustomSkieleton';
 import PageHeader from '../../components/PageHeader/PageHeader';
 import PostRow from '../../components/PostRow/PostRow';
-import { GET_USER_DETAILS } from '../../fragments/users';
 import useFetchUser from '../../hooks/useFetchUser';
 import { IParams } from '../../interfaces/params';
-import { IUserDetailsData } from '../../interfaces/user';
-import { IIdVars } from '../../interfaces/vars';
-import Form from 'antd/lib/form/Form';
 import useCreatePost from '../../hooks/useCreatePost';
 
 const UsersDetails = () => {
