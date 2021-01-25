@@ -21,9 +21,7 @@ query GetPostData($postId: ID!){
 }
 `
 export const CREATE_POST = gql`
-mutation CreatePost(
-  $input: CreatePostInput!
-) {
+mutation CreatePost( $input: CreatePostInput!) {
   createPost(input: $input) {
     id
     title
@@ -33,9 +31,7 @@ mutation CreatePost(
 `
 
 export const DELETE_POST = gql`
-mutation DeletePost(
-  $id: ID!
-) {
+mutation DeletePost($id: ID!) {
   deletePost(id: $id)
 }
 `

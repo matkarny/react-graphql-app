@@ -1,16 +1,19 @@
 
 import React, { useState } from 'react';
-import { Input } from 'antd';
-import FormItem from 'antd/lib/form/FormItem';
-import { Content } from 'antd/lib/layout/layout';
 import { useParams } from 'react-router';
+
 import CustomModal from '../../components/CustomModal/CustomModal';
 import CustomSkieleton from '../../components/CustomSkieleton/CustomSkieleton';
 import PageHeader from '../../components/PageHeader/PageHeader';
 import PostRow from '../../components/PostRow/PostRow';
+import Input from 'antd/lib/input';
+import FormItem from 'antd/lib/form/FormItem';
+import { Content } from 'antd/lib/layout/layout';
+
 import useFetchUser from '../../hooks/useFetchUser';
-import { IParams } from '../../interfaces/params';
 import useCreatePost from '../../hooks/useCreatePost';
+
+import { IParams } from '../../interfaces/params';
 
 const UsersDetails = () => {
   const [modalOpen, setModalOpen] = useState(false)
@@ -22,7 +25,7 @@ const UsersDetails = () => {
   const onModalOpen = () => setModalOpen(true)
   
   const onSubmit = ( values: any) => {
-    createNewPost({...values}).then(data => console.log(data))
+    createNewPost({...values})
     onModalClose()
   }
 

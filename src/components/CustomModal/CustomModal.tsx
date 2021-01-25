@@ -1,10 +1,11 @@
 
 import React from 'react';
-import Modal from 'antd/lib/modal/Modal';
-import Title from 'antd/lib/typography/Title'
-import { Button } from 'antd';
+
 import Form, { useForm } from 'antd/lib/form/Form';
 import FormItem from 'antd/lib/form/FormItem';
+import Button from 'antd/lib/button';
+import Modal from 'antd/lib/modal/Modal';
+import Title from 'antd/lib/typography/Title'
 
 interface IPageHeaderProps {
   title: string;

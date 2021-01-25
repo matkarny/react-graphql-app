@@ -1,6 +1,9 @@
-import { Button, Card } from 'antd';
 import React from 'react';
 import { useHistory } from 'react-router';
+
+import Button from 'antd/lib/button';
+import Card from 'antd/lib/card';
+
 import { IUser } from '../../interfaces/user';
 
 import './UserCard.css'

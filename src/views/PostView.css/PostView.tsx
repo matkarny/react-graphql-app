@@ -1,21 +1,22 @@
 
 import React, { Suspense, useState } from 'react';
 import { useParams } from 'react-router';
+import { USER_ROUTE } from '../../routes/Routes';
 
 import PageHeader from '../../components/PageHeader/PageHeader';
-import Title from 'antd/lib/typography/Title'
-import { Content } from 'antd/lib/layout/layout';
-import FormItem from 'antd/lib/form/FormItem';
 import Comment from '../../components/Comment/Comment';
 import CustomSkieleton from '../../components/CustomSkieleton/CustomSkieleton';
 import CustomModal from '../../components/CustomModal/CustomModal';
+import Title from 'antd/lib/typography/Title'
+import FormItem from 'antd/lib/form/FormItem';
+import { Content } from 'antd/lib/layout/layout';
+import Button from 'antd/lib/button';
+import Input from 'antd/lib/input';
+import Skeleton from 'antd/lib/skeleton';
 
-
-import { Button, Input, Skeleton } from 'antd';
-
-import { USER_ROUTE } from '../../routes/Routes';
 import useFetchPost from '../../hooks/useFetchPost';
 import useCreateComment from '../../hooks/useCreateComment';
+
 import { IParams } from '../../interfaces/params';
 
 import './PostView.css'

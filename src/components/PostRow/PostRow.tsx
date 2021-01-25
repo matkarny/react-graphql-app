@@ -9,16 +9,23 @@ import { RightOutlined, DeleteOutlined } from '@ant-design/icons'
 import { IPost } from '../../interfaces/post';
 
 import './PostRow.css'
+import useDeletePost from '../../hooks/useDeletePost';
 
 const PostRow = (props: IPost) => {
   const { id, title } = props
+  
   const [deleteModal, setDeleteModal] = useState(false)
-
+  const { deletePostById} = useDeletePost(id)
+  const location = useLocation()
+  const history = useHistory()
+  
   const onModalClose = () => setDeleteModal(false)
   const onModalOpen = () => setDeleteModal(true)
 
-  const location = useLocation()
-  const history = useHistory()
+  const onDeletePost = () => {
+    deletePostById();
+    onModalClose()
+  }
 
   return <>
   <div className="ant-card ant-card-bordered card-custom">
@@ -30,7 +37,7 @@ const PostRow = (props: IPost) => {
     </div>
     <Button type="link" onClick={() => history.push(`${location.pathname}/${id}`)} > <RightOutlined className="post-icon" /> </Button>
   </div>
-  <ConfirmationModal actionKind="delete post" visible={deleteModal} onOk={onModalClose} onCancel={onModalClose}/>
+  <ConfirmationModal actionKind="delete post" visible={deleteModal} onOk={onDeletePost} onCancel={onModalClose}/>
   </>
     ;
 }

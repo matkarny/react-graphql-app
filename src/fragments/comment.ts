@@ -1,9 +1,7 @@
 import { gql } from '@apollo/client';
 
 export const CREATE_COMMENT = gql`
-mutation CreateComment(
-  $input: CreateCommentInput!
-) {
+mutation CreateComment($input: CreateCommentInput!) {
   createComment(input: $input) {
     id
     name
@@ -14,9 +12,7 @@ mutation CreateComment(
 `
 
 export const DELETE_COMMENT = gql`
-mutation DeleteComment(
-  $id: ID!
-) {
+mutation DeleteComment($id: ID!) {
   deleteComment(id: $id)
 }
 `

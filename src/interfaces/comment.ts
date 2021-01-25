@@ -1,7 +1,6 @@
-export interface IDeleteCommentData{
-    deleteComment: boolean,
-}
-
-export interface IDelteCommentDetails{
-    id: number
+export interface IComment {
+    id: string,
+    name: string,
+    email: string,
+    body: string,
 }

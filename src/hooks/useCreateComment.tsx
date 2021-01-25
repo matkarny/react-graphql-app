@@ -3,6 +3,7 @@ import notification from 'antd/lib/notification/index';
 
 
 import { CREATE_COMMENT } from '../fragments/comment';
+import { IComment } from '../interfaces/comment';
 
 interface ICreateCommentProps {
     name: string,
@@ -10,8 +11,17 @@ interface ICreateCommentProps {
     body: string
 }
 
+interface ICreateCommentVars{
+    input: ICreateCommentProps
+        
+}
+
+interface ICreateCommentData {
+    createComment: IComment
+}
+
 const useCreateComment = () => {
-    const [createComment, { error }] = useMutation<any, any>(CREATE_COMMENT)
+    const [createComment, { error }] = useMutation<ICreateCommentData, ICreateCommentVars>(CREATE_COMMENT)
     if (error) {
         console.log('Create comment error', error)
         notification.error({
@@ -21,9 +31,10 @@ const useCreateComment = () => {
     };
 
     const createNewComment = async (values: ICreateCommentProps) => {
-        await createComment({ variables: { input: { ...values} } }).then((data: any) => {
-        data?.data.createComment ? notification.success({
-            message: `Create comment succesfully with id ${data?.data.createComment.id}`,
+        await createComment({ variables: { input: { ...values} } }).then((data) => {
+
+        data?.data?.createComment ? notification.success({
+            message: `Create comment succesfully with id ${data.data.createComment.id}`,
             placement: 'bottomRight'
         }) : notification.error({
             message: 'Create comment failed',

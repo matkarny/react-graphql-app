@@ -1,10 +1,15 @@
 import React, { useState } from 'react';
-import { Button, Card } from "antd";
-import { IComment } from '../../interfaces/post';
-import { DeleteOutlined } from '@ant-design/icons';
-import './Comment.css'
+
 import ConfirmationModal from '../ConfirmationModal/ConfirmationModal';
+import Card from 'antd/lib/card'
+import Button from 'antd/lib/button';
+import { DeleteOutlined } from '@ant-design/icons';
+
 import useDeleteComment from '../../hooks/useDeleteComment';
+
+import { IComment } from '../../interfaces/comment';
+
+import './Comment.css'
 
 const Comment: React.FC<IComment> = ({ body, email, id, name }) => {
   const [deleteModal, setDeleteModal] = useState(false)

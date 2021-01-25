@@ -3,11 +3,16 @@ import notification from 'antd/lib/notification/index';
 
 
 import { DELETE_COMMENT } from '../fragments/comment';
+import { IIdVars } from '../interfaces/vars';
 
-
+interface IDeleteCommentData {
+        deleteComment: boolean
+    }
 
 const useDeleteComment = (id: string) => {
-    const [deleteComment, { error }] = useMutation<any, any>(DELETE_COMMENT)
+    const [deleteComment, { error }] = useMutation<
+    IDeleteCommentData, 
+    IIdVars>(DELETE_COMMENT)
     if (error) {
         console.log('Delete comment error', error)
         notification.error({
@@ -17,8 +22,8 @@ const useDeleteComment = (id: string) => {
     };
 
     const deleteCommentById = async () => {
-        await deleteComment({ variables: { id: parseInt(id) } }).then((data: any) => {
-        data?.data.deleteComment ? notification.success({
+        await deleteComment({ variables: { id } }).then( data  => {
+        data?.data?.deleteComment ? notification.success({
             message: 'Deleted comment succesfully',
             placement: 'bottomRight'
         }) : notification.error({

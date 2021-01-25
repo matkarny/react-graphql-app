@@ -8,6 +8,5 @@ const CustomSkieleton = ()  => ( <div>
         <Skeleton active/> 
         <Skeleton active/>
         </div>
-    
 )
 export default CustomSkieleton

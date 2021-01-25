@@ -1,10 +1,11 @@
 import React from 'react';
-import { Header } from 'antd/lib/layout/layout';
 import { useHistory } from 'react-router-dom';
-import { Button } from 'antd';
-import { ArrowLeftOutlined, PlusOutlined } from '@ant-design/icons';
+
+import { Header } from 'antd/lib/layout/layout';
+import Button from 'antd/lib/button';
 import Title from 'antd/lib/typography/Title'
 import Skeleton from 'antd/lib/skeleton'
+import { ArrowLeftOutlined, PlusOutlined } from '@ant-design/icons';
 
 
 import './PageHeader.css'
